@@ -23,6 +23,25 @@ console.log(numberList);
 const output = document.getElementById('numbers-list');
 
 // gestione evento di start cronometro
+// settiamo i secondi partenza
+let seconds = 6;
+const countDown = setInterval(function() {
+    // decrementiamo i secondi
+    seconds--;
+
+    // visualizzare i secondi rimanenti nel coutdown
+    document.getElementById('countdown').textContent = seconds;
+
+    // se i secondi sono uguali a 0
+    if (seconds === 0) {
+        // fermiamo il cronometro
+        clearInterval(countDown);
+        // nascondiamo i numeri
+        output.innerHTML = '';
+        // mostriamo i form
+        answersForm.classList.remove('d-none');
+    }
+}, 1000);
 
 // il pc genera 5 numeri casuali da 1 a 100 non doppi
 
