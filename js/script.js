@@ -7,8 +7,20 @@
 
 
 // richiamo gli input e i bottoni
+const numberList = document.querySelector('btn-primary');
+
+// Selezione del form per le risposte
+const inputUser = document.querySelectorAll('.form-control');
+const answersForm = document.querySelector(' #answers-form');
+console.log(inputUser);
+console.log(answersForm);
+console.log(numberList);
+
+
+
 
 // richiamo gli output in cui dovrà apparire il testo
+const output = document.getElementById('numbers-list');
 
 // gestione evento di start cronometro
 
@@ -20,3 +32,8 @@
 // se coretti segnala in verde il numero corretto
 // se altrimenti scrive alcuni numeri sbagliati segnala numero sbagliato
 // altrimenti segnala in rosso il numero sbagliato
+
+
+
+
+
