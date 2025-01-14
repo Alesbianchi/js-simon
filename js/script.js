@@ -77,6 +77,12 @@ const countDown = setInterval(function() {
     }
 }, 1000);
 
+// Funzione per resettare gli input dell'utente
+function resetUserInputs() {
+    inputUser.forEach(input => {
+        input.value = ''; 
+    });
+}
 
 
 // gestione bottone di verifica dei numeri
@@ -101,7 +107,7 @@ function checkAnswers() {
     // Mostriamo il messaggio di risposta
     if (correctCount === 5) {
         message.textContent = `Complimenti! Hai indovinato tutti i numeri!`;
-        message.style.color = 'green';  
+        message.style.color = 'green ';  
     } else {
         message.textContent = `Hai indovinato ${correctCount} su 5. Numeri errati: ${incorrectNumbers.join(', ')}`;
         message.style.color = 'red';  
@@ -112,6 +118,7 @@ function checkAnswers() {
 numberList.addEventListener('click', function(event) {
     event.preventDefault();  
     checkAnswers();  
+    resetUserInputs();
 });
 
 
