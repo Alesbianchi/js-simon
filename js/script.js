@@ -17,10 +17,24 @@ console.log(answersForm);
 console.log(numberList);
 
 
-
-
 // richiamo gli output in cui dovrà apparire il testo
 const output = document.getElementById('numbers-list');
+
+// il pc genera 5 numeri casuali da 1 a 100 non doppi
+function generateRandomNumbers(count, min, max) {
+    const numbers = [];
+    
+    while (numbers.length < count) {
+        const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+        
+        // Aggiungi il numero solo se non è già presente nell'array
+        if (!numbers.includes(randomNumber)) {
+            numbers.push(randomNumber);
+        }
+    }
+    
+    return numbers;
+}
 
 // gestione evento di start cronometro
 // settiamo i secondi partenza
@@ -33,17 +47,33 @@ const countDown = setInterval(function() {
     document.getElementById('countdown').textContent = seconds;
 
     // se i secondi sono uguali a 0
+    if (seconds === 5) { 
+        const randomNumbers = generateRandomNumbers(5, 1, 100);
+        
+        // Aggiungo i numeri casuali all'output
+        randomNumbers.forEach(number => {
+            const listItem = document.createElement('li');
+            listItem.textContent = number;
+            output.appendChild(listItem);
+        });
+    }
+
+    // Se i secondi sono uguali a 0
     if (seconds === 0) {
-        // fermiamo il cronometro
+        // Fermiamo il cronometro
         clearInterval(countDown);
-        // nascondiamo i numeri
+        
+        // Nascondiamo i numeri
         output.innerHTML = '';
-        // mostriamo i form
+        
+        // Mostriamo il form per le risposte
         answersForm.classList.remove('d-none');
     }
 }, 1000);
 
-// il pc genera 5 numeri casuali da 1 a 100 non doppi
+
+
+
 
 // l'utente dovrà inserire i numeri che ha visto precedentemente
 
@@ -51,6 +81,7 @@ const countDown = setInterval(function() {
 // se coretti segnala in verde il numero corretto
 // se altrimenti scrive alcuni numeri sbagliati segnala numero sbagliato
 // altrimenti segnala in rosso il numero sbagliato
+
 
 
 
